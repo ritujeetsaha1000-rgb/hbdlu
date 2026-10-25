@@ -437,110 +437,207 @@ function openFeastModal() {
 }
 
 // ==========================================
-// 6.5. GRAND FEAST UNBOXING EXPERIENCE
 // ==========================================
-let isFeastRevealed = false;
+// 6.5. GRAND FEAST FOUNTAIN & STEP-BY-STEP UNBOXING
+// ==========================================
 
-function startFeastReveal() {
-    if (isFeastRevealed) return;
-    isFeastRevealed = true;
+function launchStickerFountain(imageSrc, count = 30) {
+    const container = document.getElementById('sticker-fountain-container') || document.body;
+    const startX = window.innerWidth / 2;
+    const startY = window.innerHeight * 0.72;
 
-    // Hide intro, show stage
-    const feastIntro = document.getElementById('feastIntro');
-    const feastStage = document.getElementById('feastStage');
-    feastIntro.style.display = 'none';
-    feastStage.classList.add('active');
+    for (let i = 0; i < count; i++) {
+        const img = document.createElement('img');
+        img.src = imageSrc;
+        img.className = 'fountain-particle';
+        
+        // Dynamic angle and velocity for an explosive fountain effect
+        const angle = (Math.random() * 110 - 55) * (Math.PI / 180); // -55 to +55 deg arc
+        const speed = Math.random() * 16 + 13;
+        let vx = Math.sin(angle) * speed + (Math.random() - 0.5) * 6;
+        let vy = -Math.cos(angle) * speed - (Math.random() * 5);
+        const gravity = 0.52;
+        let posX = startX + (Math.random() - 0.5) * 80;
+        let posY = startY;
+        let rot = Math.random() * 360;
+        let rotSpeed = (Math.random() - 0.5) * 14;
+        const size = Math.random() * 45 + 50; // 50px to 95px
+        let opacity = 1;
 
-    // Chime bell
-    playChimeNote(523.25);
+        img.style.position = 'fixed';
+        img.style.width = size + 'px';
+        img.style.height = 'auto';
+        img.style.zIndex = '999999';
+        img.style.pointerEvents = 'none';
+        img.style.filter = 'drop-shadow(0 6px 14px rgba(0,0,0,0.25))';
+        img.style.transform = `translate(${posX - size/2}px, ${posY - size/2}px) rotate(${rot}deg)`;
 
-    // Food 1: Diet Coke pops out immediately
-    setTimeout(() => {
+        container.appendChild(img);
+
+        function updateParticle() {
+            posX += vx;
+            posY += vy;
+            vy += gravity;
+            rot += rotSpeed;
+
+            if (posY > window.innerHeight * 0.45) {
+                opacity -= 0.016;
+            }
+
+            img.style.transform = `translate(${posX - size/2}px, ${posY - size/2}px) rotate(${rot}deg)`;
+            img.style.opacity = Math.max(0, opacity);
+
+            if (posY < window.innerHeight + 120 && opacity > 0) {
+                requestAnimationFrame(updateParticle);
+            } else {
+                img.remove();
+            }
+        }
+        requestAnimationFrame(updateParticle);
+    }
+}
+
+let currentFeastStep = 1;
+
+function handleFeastStep() {
+    const stepBtn = document.getElementById('feastStepBtn');
+    const stepBtnText = document.getElementById('feastStepBtnText');
+    const dot1 = document.getElementById('dot1');
+    const dot2 = document.getElementById('dot2');
+    const dot3 = document.getElementById('dot3');
+
+    if (currentFeastStep === 1) {
+        // STEP 1: DIET COKE FOUNTAIN
+        launchStickerFountain('assets/diet-coke-sticker.png', 32);
+        playChimeNote(587.33);
+
         const foodCoke = document.getElementById('foodCoke');
         foodCoke.classList.add('pop-in');
-        playChimeNote(587.33);
-        confetti({
-            particleCount: 35,
-            spread: 60,
-            origin: { y: 0.7 }
-        });
-    }, 300);
 
-    // Food 2: Pizza pops out after 1.2s
-    setTimeout(() => {
-        const foodPizza = document.getElementById('foodPizza');
-        foodPizza.classList.add('pop-in');
-        playChimeNote(659.25);
-        confetti({
-            particleCount: 45,
-            spread: 70,
-            origin: { y: 0.65 }
-        });
-    }, 1500);
+        dot1.classList.remove('active');
+        dot1.classList.add('completed');
+        dot2.classList.add('active');
 
-    // Food 3: Biryani pops out after 2.4s
-    setTimeout(() => {
-        const foodBiryani = document.getElementById('foodBiryani');
-        foodBiryani.classList.add('pop-in');
-        playChimeNote(783.99);
-        confetti({
-            particleCount: 55,
-            spread: 80,
-            origin: { y: 0.6 }
-        });
-    }, 2700);
+        stepBtnText.textContent = "Open Second Part 🍕✨";
+        stepBtn.classList.remove('pulse-glow');
+        void stepBtn.offsetWidth;
+        stepBtn.classList.add('pulse-glow');
 
-    // Climax: Grand Love Confession Banner pops out
-    setTimeout(() => {
-        const confessionBanner = document.getElementById('confessionBanner');
-        confessionBanner.classList.add('active');
-
-        // Mega confetti fireworks
+        // Playful confetti
         if (typeof confetti === 'function') {
             confetti({
-                particleCount: 150,
-                spread: 100,
-                colors: ['#ff1493', '#ff69b4', '#ffd700', '#ff4d80'],
-                origin: { y: 0.45 }
+                particleCount: 40,
+                spread: 70,
+                origin: { y: 0.65 }
             });
-            setTimeout(() => {
-                confetti({
-                    particleCount: 100,
-                    angle: 60,
-                    spread: 80,
-                    origin: { x: 0 }
-                });
-                confetti({
-                    particleCount: 100,
-                    angle: 120,
-                    spread: 80,
-                    origin: { x: 1 }
-                });
-            }, 300);
         }
-    }, 4000);
+
+        currentFeastStep = 2;
+
+    } else if (currentFeastStep === 2) {
+        // STEP 2: PIZZA FOUNTAIN
+        launchStickerFountain('assets/pizza-sticker.png', 32);
+        playChimeNote(659.25);
+
+        const foodPizza = document.getElementById('foodPizza');
+        foodPizza.classList.add('pop-in');
+
+        dot2.classList.remove('active');
+        dot2.classList.add('completed');
+        dot3.classList.add('active');
+
+        stepBtnText.textContent = "Open Third Part 🍗🍚👑";
+        stepBtn.classList.remove('pulse-glow');
+        void stepBtn.offsetWidth;
+        stepBtn.classList.add('pulse-glow');
+
+        if (typeof confetti === 'function') {
+            confetti({
+                particleCount: 50,
+                spread: 80,
+                colors: ['#ff9966', '#ff5e62', '#ffd700'],
+                origin: { y: 0.6 }
+            });
+        }
+
+        currentFeastStep = 3;
+
+    } else if (currentFeastStep === 3) {
+        // STEP 3: BIRYANI FOUNTAIN & GRAND CONFESSION
+        launchStickerFountain('assets/biryani-sticker.png', 35);
+        playChimeNote(783.99);
+
+        const foodBiryani = document.getElementById('foodBiryani');
+        foodBiryani.classList.add('pop-in');
+
+        dot3.classList.remove('active');
+        dot3.classList.add('completed');
+
+        // Hide action button and drop confession banner
+        stepBtn.style.display = 'none';
+
+        setTimeout(() => {
+            const confessionBanner = document.getElementById('confessionBanner');
+            confessionBanner.classList.add('active');
+            playChimeNote(880.00);
+
+            // Grand Fireworks Confetti Climax
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 160,
+                    spread: 100,
+                    colors: ['#ff1493', '#ff69b4', '#ffd700', '#ff4d80'],
+                    origin: { y: 0.45 }
+                });
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 90,
+                        angle: 60,
+                        spread: 85,
+                        origin: { x: 0 }
+                    });
+                    confetti({
+                        particleCount: 90,
+                        angle: 120,
+                        spread: 85,
+                        origin: { x: 1 }
+                    });
+                }, 280);
+            }
+        }, 900);
+
+        currentFeastStep = 4;
+    }
 }
 
 function resetAndReplayFeast() {
-    isFeastRevealed = false;
+    currentFeastStep = 1;
     const foodCoke = document.getElementById('foodCoke');
     const foodPizza = document.getElementById('foodPizza');
     const foodBiryani = document.getElementById('foodBiryani');
     const confessionBanner = document.getElementById('confessionBanner');
-    const feastIntro = document.getElementById('feastIntro');
-    const feastStage = document.getElementById('feastStage');
+    const stepBtn = document.getElementById('feastStepBtn');
+    const stepBtnText = document.getElementById('feastStepBtnText');
+    const dot1 = document.getElementById('dot1');
+    const dot2 = document.getElementById('dot2');
+    const dot3 = document.getElementById('dot3');
 
     foodCoke.classList.remove('pop-in');
     foodPizza.classList.remove('pop-in');
     foodBiryani.classList.remove('pop-in');
     confessionBanner.classList.remove('active');
 
-    feastStage.classList.remove('active');
-    feastIntro.style.display = 'block';
+    stepBtn.style.display = 'inline-flex';
+    stepBtnText.textContent = "Open First Part 🥤🎀";
+    stepBtn.classList.add('pulse-glow');
+
+    dot1.className = 'step-dot active';
+    dot2.className = 'step-dot';
+    dot3.className = 'step-dot';
 }
 
 
-// ==========================================
+
 // 7. MODAL HELPERS
 // ==========================================
 function closeModal(modalId) {

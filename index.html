@@ -17,11 +17,14 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <!-- Canvas Confetti -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
-    <link rel="stylesheet" href="style.css?v=3.0">
+    <link rel="stylesheet" href="style.css?v=4.0">
 </head>
 <body>
 
     <!-- Ambient Floating Hearts Background Canvas -->
+    <!-- Sticker Fountain Overlay -->
+    <div id="sticker-fountain-container"></div>
+
     <canvas id="hearts-canvas"></canvas>
 
     <!-- Audio Player Toggle -->
@@ -375,62 +378,64 @@
         <div class="modal-card feast-modal-card">
             <button class="modal-close" onclick="closeModal('feastModal')">&times;</button>
             
-            <div class="feast-intro" id="feastIntro">
+            <div class="feast-header">
                 <span class="modal-tag grand-tag">The Crowning Surprise 👑✨</span>
-                <h3 class="feast-headline">A Special Gift For Lucy</h3>
-                <p class="feast-sub">Something specially prepared for your tastebuds and your heart...</p>
+                <h3 class="feast-headline">Lucy's Favorite Feast</h3>
+                <p class="feast-sub">Open each part of your birthday surprise one by one!</p>
                 
-                <!-- INTERACTIVE 3D GIFT BOX TO TAP -->
-                <div class="interactive-gift-box" id="interactiveGiftBox" onclick="startFeastReveal()">
-                    <div class="box-halo"></div>
-                    <div class="gift-box-wrapper">
-                        <div class="box-lid">
-                            <div class="box-bow">🎀</div>
-                        </div>
-                        <div class="box-body">🎁</div>
-                    </div>
-                    <span class="box-tap-cta">Tap the Gift Box to Open! ✨</span>
+                <!-- Step progress dots -->
+                <div class="feast-steps-indicator">
+                    <span class="step-dot active" id="dot1">Part 1: Diet Coke 🥤</span>
+                    <span class="step-dot" id="dot2">Part 2: Pizza 🍕</span>
+                    <span class="step-dot" id="dot3">Part 3: Biryani 🍗🍚</span>
+                </div>
+
+                <!-- MAIN INTERACTIVE ACTION BUTTON -->
+                <div class="feast-action-wrap">
+                    <button id="feastStepBtn" class="btn btn-primary feast-step-btn pulse-glow" onclick="handleFeastStep()">
+                        <span id="feastStepBtnText">Open First Part 🥤🎀</span>
+                        <i data-lucide="sparkles"></i>
+                    </button>
                 </div>
             </div>
 
             <!-- UNBOXED FEAST STAGE -->
-            <div class="feast-stage" id="feastStage">
-                <h4 class="feast-stage-title">Your Absolute Favorite Feast! 😋💖</h4>
+            <div class="feast-stage active" id="feastStage">
                 
                 <div class="food-cards-grid">
                     <!-- Food 1: Diet Coke -->
                     <div class="food-item-card" id="foodCoke">
-                        <div class="food-emoji-wrap coke-glow">
-                            <span class="food-emoji">🥤</span>
-                            <span class="food-sparkle">🧊</span>
+                        <div class="food-sticker-wrap">
+                            <img src="assets/diet-coke-sticker.png" alt="Diet Coke with Bow" class="food-sticker-img">
                         </div>
                         <div class="food-info">
-                            <h5>Ice-Cold Diet Coke</h5>
-                            <p>Crisp, bubbling & ice-cold — Lucy's all-time favorite refresher!</p>
+                            <span class="part-badge">Part 1</span>
+                            <h5>Ice-Cold Diet Coke 🎀</h5>
+                            <p>Crisp, bubbling & ice-cold — Never let the world run out of Diet Coke for Lucy!</p>
                         </div>
                     </div>
 
                     <!-- Food 2: Pizza -->
                     <div class="food-item-card" id="foodPizza">
-                        <div class="food-emoji-wrap pizza-glow">
-                            <span class="food-emoji">🍕</span>
-                            <span class="food-sparkle">✨</span>
+                        <div class="food-sticker-wrap">
+                            <img src="assets/pizza-sticker.png" alt="Delicious Cheesy Pizza" class="food-sticker-img">
                         </div>
                         <div class="food-info">
-                            <h5>Hot Cheesy Pizza</h5>
-                            <p>Oven-fresh, loaded with gooey cheese & endless delicious slices!</p>
+                            <span class="part-badge">Part 2</span>
+                            <h5>Cheesy Gourmet Pizza 🍕</h5>
+                            <p>Oven-fresh, loaded with gooey cheese & endless slices made just for the birthday girl!</p>
                         </div>
                     </div>
 
                     <!-- Food 3: Biryani -->
                     <div class="food-item-card" id="foodBiryani">
-                        <div class="food-emoji-wrap biryani-glow">
-                            <span class="food-emoji">🍗🍚</span>
-                            <span class="food-sparkle">🔥</span>
+                        <div class="food-sticker-wrap biryani-wrap">
+                            <img src="assets/biryani-sticker.png" alt="Royal Dum Biryani" class="food-sticker-img rounded-dish">
                         </div>
                         <div class="food-info">
-                            <h5>Royal Dum Biryani</h5>
-                            <p>Rich, aromatic spices & royal flavor — Pure comfort in every bite!</p>
+                            <span class="part-badge">Part 3</span>
+                            <h5>Royal Dum Biryani 🍗🍚</h5>
+                            <p>Rich, aromatic spices & royal flavor — Pure comforting happiness in every bite!</p>
                         </div>
                     </div>
                 </div>
@@ -445,7 +450,7 @@
                     <p class="confession-author">Forever and always, your number one fan 💍</p>
                     
                     <button class="btn btn-secondary replay-btn" onclick="resetAndReplayFeast()">
-                        <span>Unbox The Feast Again 🔁</span>
+                        <span>Replay The Feast Fountain 🔁</span>
                     </button>
                 </div>
             </div>
@@ -486,7 +491,7 @@
         </div>
     </div>
 
-    <script src="app.js?v=3.0"></script>
+    <script src="app.js?v=4.0"></script>
     <script>
         // Initialize Lucide icons
         lucide.createIcons();

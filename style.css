@@ -1413,3 +1413,136 @@ body {
         font-size: 1rem;
     }
 }
+
+
+/* ========================================================
+   STICKER FOUNTAIN & STEP-BY-STEP UNBOXING STYLES
+======================================================== */
+#sticker-fountain-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 999999;
+    overflow: hidden;
+}
+
+.fountain-particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 999999;
+    user-select: none;
+    -webkit-user-select: none;
+    will-change: transform, opacity;
+}
+
+.feast-steps-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 14px 0 20px;
+    flex-wrap: wrap;
+}
+
+.step-dot {
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: #f5eef2;
+    color: #8c7385;
+    border: 1px solid #ebdbe5;
+    transition: all 0.3s ease;
+}
+
+.step-dot.active {
+    background: linear-gradient(135deg, #ff4d80, #ff759f);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(255, 77, 128, 0.3);
+    transform: scale(1.05);
+}
+
+.step-dot.completed {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-color: #c8e6c9;
+}
+
+.feast-action-wrap {
+    margin: 10px auto 26px;
+    display: flex;
+    justify-content: center;
+}
+
+.feast-step-btn {
+    padding: 16px 36px;
+    font-size: 1.12rem;
+    font-weight: 800;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #ff1493, #ff4d80, #ff759f);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 10px 25px rgba(255, 20, 147, 0.4);
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.feast-step-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 14px 32px rgba(255, 20, 147, 0.55);
+}
+
+.pulse-glow {
+    animation: stepPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes stepPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 10px 25px rgba(255, 20, 147, 0.4); }
+    50% { transform: scale(1.04); box-shadow: 0 14px 35px rgba(255, 20, 147, 0.65); }
+}
+
+/* Sticker Display inside card */
+.food-sticker-wrap {
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 240, 245, 0.8) 100%);
+    border-radius: 20px;
+    padding: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.food-sticker-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+    transition: transform 0.3s ease;
+}
+
+.food-item-card:hover .food-sticker-img {
+    transform: scale(1.1) rotate(4deg);
+}
+
+.rounded-dish {
+    border-radius: 12px;
+}
+
+.part-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: #ffe3ed;
+    color: var(--primary-dark);
+    padding: 2px 10px;
+    border-radius: 12px;
+    margin-bottom: 4px;
+}
