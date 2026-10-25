@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Sweet 16th Birthday, Lucy! 💖✨</title>
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Ambient Floating Hearts Background Canvas -->
+    <canvas id="hearts-canvas"></canvas>
+
+    <!-- Audio Player Toggle -->
+    <div class="audio-toggle-container">
+        <button id="musicToggle" class="music-btn" title="Toggle romantic background melody">
+            <span class="music-icon">🎵</span>
+            <span class="music-text">Play Melody</span>
+        </button>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <main class="app-wrapper">
+
+        <!-- HERO SECTION -->
+        <header class="hero-section">
+            <div class="badge-pill">
+                <span class="sparkle">✨</span> October 26, 2010 — Sweet 16 Celebration <span class="sparkle">✨</span>
+            </div>
+            <h1 class="hero-title">Happy Birthday, <span class="text-gradient">Lucy!</span></h1>
+            <p class="hero-subtitle">
+                To the girl who walked into my life on a train platform and made every moment since unforgettable.
+            </p>
+
+            <div class="hero-card-glow">
+                <div class="hero-img-wrap">
+                    <img src="assets/lucy-1.jpeg" alt="Lucy Birthday Girl" class="hero-main-photo">
+                    <div class="photo-badge">The Birthday Girl 👑</div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <a href="#our-story" class="scroll-down-hint">
+                <span>Discover our journey</span>
+                <i data-lucide="chevron-down"></i>
+            </a>
+        </header>
+
+        <!-- OUR STORY & TIMELINE SECTION -->
+        <section id="our-story" class="section story-section">
+            <div class="section-header">
+                <span class="section-tag">Our Timeline</span>
+                <h2 class="section-title">From A Train Ride to Forever 💕</h2>
+                <p class="section-desc">Every great love story has a beginning, and ours is my favorite chapter.</p>
+            </div>
+
+            <div class="timeline-container">
+                <!-- Chapter 1 -->
+                <div class="timeline-card">
+                    <div class="timeline-marker">
+                        <i data-lucide="train"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">30th June</span>
+                        <h3>The Girl in the School Uniform 🚉</h3>
+                        <p>
+                            I saw you standing there in your school uniform from the train. My heart skipped a beat, and I gathered every ounce of courage to approach you. That one moment changed my whole world.
+                        </p>
+                        <div class="timeline-img-box">
+                            <img src="assets/lucy-small-1.jpeg" alt="School days memory">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chapter 2 -->
+                <div class="timeline-card">
+                    <div class="timeline-marker">
+                        <i data-lucide="shield-heart"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Our Journey</span>
+                        <h3>Through Every Storm & Conflict ⛈️✨</h3>
+                        <p>
+                            We didn't have an easy fairy tale. We went through misunderstandings, arguments, and conflicts. But through every storm, we chose to hold on tighter instead of letting go. Loving you has always been worth every battle.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Chapter 3 -->
+                <div class="timeline-card highlight-card">
+                    <div class="timeline-marker star-marker">
+                        <i data-lucide="heart"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">11th September • 11:11 PM</span>
+                        <h3>The 11:11 Wish Proposal 🌟</h3>
+                        <p>
+                            At the magical time when wishes are made, 11:11 PM on September 11th, I asked you to be mine. That wish came true, and having you as my girlfriend is the greatest gift of my life.
+                        </p>
+                        <div class="timeline-img-box">
+                            <img src="assets/lucy-wa.jpeg" alt="11:11 Special Moment">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chapter 4 -->
+                <div class="timeline-card birthday-highlight">
+                    <div class="timeline-marker cake-marker">
+                        <i data-lucide="cake"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">26th October</span>
+                        <h3>Your Sweet 16th Birthday! 🎂🎉</h3>
+                        <p>
+                            Born on October 26, 2010. Today is your day, Lucy! May this year bring you all the smiles, joy, laughter, and blessings in the world. You deserve the stars.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHOTO MEMORIES & GALLERY -->
+        <section class="section gallery-section">
+            <div class="section-header">
+                <span class="section-tag">Memories</span>
+                <h2 class="section-title">Moments of You 📸</h2>
+                <p class="section-desc">Tap any polaroid to see it up close!</p>
+            </div>
+
+            <div class="polaroid-grid">
+                <div class="polaroid-item" data-photo="assets/lucy-2.jpeg" data-caption="Your prettiest smile 🌸">
+                    <div class="tape-strip"></div>
+                    <div class="polaroid-img-frame">
+                        <img src="assets/lucy-2.jpeg" alt="Lucy Memory 2">
+                    </div>
+                    <p class="polaroid-label">Pure radiance ✨</p>
+                </div>
+
+                <div class="polaroid-item tilt-right" data-photo="assets/lucy-3.jpeg" data-caption="Cuteness overload! 🥰">
+                    <div class="tape-strip"></div>
+                    <div class="polaroid-img-frame">
+                        <img src="assets/lucy-3.jpeg" alt="Lucy Memory 3">
+                    </div>
+                    <p class="polaroid-label">My favorite face 🥰</p>
+                </div>
+
+                <div class="polaroid-item tilt-left" data-photo="assets/lucy-4.jpeg" data-caption="Every moment with you is special 💖">
+                    <div class="tape-strip"></div>
+                    <div class="polaroid-img-frame">
+                        <img src="assets/lucy-4.jpeg" alt="Lucy Memory 4">
+                    </div>
+                    <p class="polaroid-label">Sunshine in a picture ☀️</p>
+                </div>
+
+                <div class="polaroid-item" data-photo="assets/lucy-5.jpeg" data-caption="Gorgeous as always! 👑">
+                    <div class="tape-strip"></div>
+                    <div class="polaroid-img-frame">
+                        <img src="assets/lucy-5.jpeg" alt="Lucy Memory 5">
+                    </div>
+                    <p class="polaroid-label">Birthday Queen 👑</p>
+                </div>
+
+                <div class="polaroid-item tilt-right" data-photo="assets/lucy-small-2.jpeg" data-caption="Little moments, big memories 💫">
+                    <div class="tape-strip"></div>
+                    <div class="polaroid-img-frame">
+                        <img src="assets/lucy-small-2.jpeg" alt="Lucy Small Memory">
+                    </div>
+                    <p class="polaroid-label">Sweetest Lucy 💖</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERACTIVE BIRTHDAY LOVE NOTES -->
+        <section class="section notes-section">
+            <div class="section-header">
+                <span class="section-tag">From My Heart</span>
+                <h2 class="section-title">Open Your Birthday Notes 💌</h2>
+                <p class="section-desc">Tap each envelope to reveal a secret note written just for you.</p>
+            </div>
+
+            <div class="notes-grid">
+                <div class="note-card" onclick="openNote(1)">
+                    <div class="envelope-icon">💌</div>
+                    <h4>Note #1</h4>
+                    <p class="preview-text">On how much you mean to me...</p>
+                    <span class="tap-hint">Tap to read</span>
+                </div>
+
+                <div class="note-card" onclick="openNote(2)">
+                    <div class="envelope-icon">✨</div>
+                    <h4>Note #2</h4>
+                    <p class="preview-text">Our sweet 11:11 promise...</p>
+                    <span class="tap-hint">Tap to read</span>
+                </div>
+
+                <div class="note-card" onclick="openNote(3)">
+                    <div class="envelope-icon">🎂</div>
+                    <h4>Note #3</h4>
+                    <p class="preview-text">My birthday wish for you...</p>
+                    <span class="tap-hint">Tap to read</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE RUNAWAY QUESTION SECTION: "DO U LOVE ME?" -->
+        <section class="section question-section" id="quiz-section">
+            <div class="question-container">
+                <div class="question-badge">A Quick Question 🥺</div>
+                <h2 class="question-title">Do you love me, Lucy?</h2>
+                <p class="question-subtitle">Be totally honest! Choose wisely... (if you can 😉)</p>
+
+                <!-- RUNAWAY ARENA -->
+                <div class="button-arena" id="buttonArena">
+                    <button id="yesBtn" class="btn btn-yes">
+                        YES! 🥰💖
+                    </button>
+                    <button id="noBtn" class="btn btn-no">
+                        NO 🙄
+                    </button>
+                </div>
+                <div id="noTauntText" class="taunt-text"></div>
+            </div>
+        </section>
+
+        <!-- SURPRISE REVEAL SECTION (UNLOCKS AFTER YES OR DIRECT) -->
+        <section class="section surprise-section" id="surprise-section">
+            <div class="section-header">
+                <span class="section-tag">Secret Surprises</span>
+                <h2 class="section-title">I Have Something Special For You... 🎁</h2>
+                <p class="section-desc">Click the gift boxes below to unlock your surprises!</p>
+            </div>
+
+            <div class="gifts-container">
+                <!-- GIFT 1: CRINGE VIDEO -->
+                <div class="gift-box-card" id="giftCard1" onclick="openCringeGift()">
+                    <div class="gift-icon-bounce">🎁</div>
+                    <div class="gift-ribbon">Surprise #1</div>
+                    <h3>Open Surprise #1</h3>
+                    <p>Fair warning: It might contain some very unfiltered moments of us 😂</p>
+                    <button class="gift-action-btn">
+                        <span>Unwrap Gift #1</span>
+                        <i data-lucide="play-circle"></i>
+                    </button>
+                </div>
+
+                <!-- GIFT 2: FAB VIDEO (UNLOCKED AFTER GIFT 1) -->
+                <div class="gift-box-card locked-gift" id="giftCard2" onclick="openFabGift()">
+                    <div class="gift-icon-bounce" id="gift2Icon">🔒</div>
+                    <div class="gift-ribbon gold-ribbon">Grand Finale #2</div>
+                    <h3>The Final Gift 👑✨</h3>
+                    <p id="gift2Desc">Unwrap Surprise #1 first to unlock the ultimate gift!</p>
+                    <button class="gift-action-btn gold-btn" id="gift2Btn">
+                        <span id="gift2BtnText">Locked 🔒</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="app-footer">
+            <p>Made with all my heart for Lucy on her Sweet 16th Birthday 💖</p>
+            <p class="small-sub">30th June • 11th September 11:11 PM • 26th October</p>
+        </footer>
+
+    </main>
+
+    <!-- MODAL 1: CRINGE VIDEO MODAL -->
+    <div id="cringeModal" class="modal-overlay">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('cringeModal')">&times;</button>
+            <div class="modal-header">
+                <span class="modal-tag">Surprise Unlocked! 😂💕</span>
+                <h3>The "Cringe" Moments Of Us</h3>
+                <p>Because being weird and goofy together is our favorite thing!</p>
+            </div>
+            <div class="video-container">
+                <video id="cringeVideo" controls playsinline preload="metadata">
+                    <source src="assets/cringe-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-primary" onclick="proceedToFinalGift()">
+                    <span>Ready for the Final Gift? 👑✨</span>
+                    <i data-lucide="arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: FAB VIDEO MODAL (GRAND FINALE) -->
+    <div id="fabModal" class="modal-overlay">
+        <div class="modal-card gold-modal">
+            <button class="modal-close" onclick="closeModal('fabModal')">&times;</button>
+            <div class="modal-header">
+                <span class="modal-tag gold-tag">Grand Finale! 👑✨</span>
+                <h3>Our Fabulous Moments Together</h3>
+                <p>To our beautiful journey, our sweet laughs, and many more birthdays ahead.</p>
+            </div>
+            <div class="video-container">
+                <video id="fabVideo" controls playsinline preload="metadata">
+                    <source src="assets/fab-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="final-letter">
+                <h4>Forever & Always, Lucy 💖</h4>
+                <p>
+                    From seeing you on the train on June 30th, through every conflict we conquered, to making a wish at 11:11 PM on September 11th — you are my favorite person. Happy 16th Birthday, beautiful!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: NOTE POPUP MODAL -->
+    <div id="noteModal" class="modal-overlay">
+        <div class="modal-card note-modal-card">
+            <button class="modal-close" onclick="closeModal('noteModal')">&times;</button>
+            <div class="note-modal-envelope">💌</div>
+            <h3 id="noteTitle" class="note-modal-title">A Special Note</h3>
+            <div id="noteBody" class="note-modal-body"></div>
+            <button class="btn btn-secondary" onclick="closeModal('noteModal')">Close Note 💕</button>
+        </div>
+    </div>
+
+    <!-- MODAL 4: PHOTO ZOOM MODAL -->
+    <div id="photoModal" class="modal-overlay" onclick="closeModal('photoModal')">
+        <div class="photo-modal-card" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal('photoModal')">&times;</button>
+            <img id="photoModalImg" src="" alt="Zoomed memory">
+            <p id="photoModalCaption" class="photo-modal-caption"></p>
+        </div>
+    </div>
+
+    <!-- LOVE YES CONFIRMATION MODAL -->
+    <div id="yesModal" class="modal-overlay">
+        <div class="modal-card love-modal-card">
+            <div class="love-modal-emoji">🥰💖🎉</div>
+            <h3>I Knew It!</h3>
+            <p>You can never say no to me! Happy Sweet 16th Birthday my favorite girl in the entire world! 🎂✨</p>
+            <button class="btn btn-primary" onclick="closeYesModalAndScroll()">
+                <span>See My Surprise For You 🎁</span>
+                <i data-lucide="gift"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
