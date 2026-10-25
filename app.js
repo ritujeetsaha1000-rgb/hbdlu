@@ -148,21 +148,43 @@ musicToggleBtn.addEventListener('click', () => {
 
 
 // ==========================================
-// 3. POLAROID PHOTO ZOOM
+// 3. POLAROID PHOTO ZOOM & GALLERY TABS
 // ==========================================
 const photoModal = document.getElementById('photoModal');
 const photoModalImg = document.getElementById('photoModalImg');
 const photoModalCaption = document.getElementById('photoModalCaption');
 
-document.querySelectorAll('.polaroid-item').forEach(item => {
-    item.addEventListener('click', () => {
-        const src = item.getAttribute('data-photo');
-        const caption = item.getAttribute('data-caption');
-        photoModalImg.src = src;
-        photoModalCaption.textContent = caption;
-        photoModal.classList.add('active');
+function initPolaroids() {
+    document.querySelectorAll('.polaroid-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const src = item.getAttribute('data-photo');
+            const caption = item.getAttribute('data-caption');
+            photoModalImg.src = src;
+            photoModalCaption.textContent = caption;
+            photoModal.classList.add('active');
+        });
     });
-});
+}
+initPolaroids();
+
+function switchGallery(tab) {
+    const tabHave = document.getElementById('tabHave');
+    const tabMiss = document.getElementById('tabMiss');
+    const galleryHave = document.getElementById('galleryHave');
+    const galleryMiss = document.getElementById('galleryMiss');
+
+    if (tab === 'have') {
+        tabHave.classList.add('active');
+        tabMiss.classList.remove('active');
+        galleryHave.classList.add('active');
+        galleryMiss.classList.remove('active');
+    } else {
+        tabMiss.classList.add('active');
+        tabHave.classList.remove('active');
+        galleryMiss.classList.add('active');
+        galleryHave.classList.remove('active');
+    }
+}
 
 
 // ==========================================
@@ -339,8 +361,8 @@ function unlockGift2() {
     gift2Card.classList.remove('locked-gift');
     gift2Card.classList.add('unlocked');
     document.getElementById('gift2Icon').textContent = '👑';
-    document.getElementById('gift2Desc').textContent = 'Unlocked! Tap here to watch our grand fabulous finale! ✨';
-    document.getElementById('gift2BtnText').textContent = 'Open Final Gift 👑✨';
+    document.getElementById('gift2Desc').textContent = 'Unlocked! Tap here to watch Lover wrt Me! 👑✨';
+    document.getElementById('gift2BtnText').textContent = 'Open Lover wrt Me 👑✨';
 }
 
 function proceedToFinalGift() {
