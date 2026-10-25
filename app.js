@@ -343,6 +343,7 @@ function closeYesModalAndScroll() {
 // 6. GIFTS & VIDEO MODAL SURPRISES
 // ==========================================
 let gift1Opened = false;
+let gift2Opened = false;
 
 function openCringeGift() {
     gift1Opened = true;
@@ -352,7 +353,7 @@ function openCringeGift() {
     video.currentTime = 0;
     video.play().catch(() => {});
 
-    // Unlock Grand Finale Gift 2
+    // Unlock Chapter II
     unlockGift2();
 }
 
@@ -361,8 +362,8 @@ function unlockGift2() {
     gift2Card.classList.remove('locked-gift');
     gift2Card.classList.add('unlocked');
     document.getElementById('gift2Icon').textContent = '👑';
-    document.getElementById('gift2Desc').textContent = 'Unlocked! Tap here to watch Lover wrt Me! 👑✨';
-    document.getElementById('gift2BtnText').textContent = 'Open Lover wrt Me 👑✨';
+    document.getElementById('gift2Desc').textContent = 'Unlocked! Tap here to experience Chapter II ✨';
+    document.getElementById('gift2BtnText').textContent = 'Experience Chapter II 👑';
 }
 
 function proceedToFinalGift() {
@@ -376,18 +377,22 @@ function openFabGift() {
     if (!gift1Opened) {
         const gift2Card = document.getElementById('giftCard2');
         gift2Card.style.animation = 'gentleBounce 0.4s 2';
-        alert("Psst! Open Surprise #1 first to unlock this one! 😉💖");
+        alert("Psst! Experience Chapter I first to unlock this one! 😉💖");
         setTimeout(() => {
             gift2Card.style.animation = '';
         }, 1000);
         return;
     }
 
+    gift2Opened = true;
     const modal = document.getElementById('fabModal');
     modal.classList.add('active');
     const video = document.getElementById('fabVideo');
     video.currentTime = 0;
     video.play().catch(() => {});
+
+    // Unlock Grand Finale Gift 3
+    unlockGift3();
 
     // Golden fireworks confetti
     if (typeof confetti === 'function') {
@@ -398,6 +403,140 @@ function openFabGift() {
             origin: { y: 0.5 }
         });
     }
+}
+
+function unlockGift3() {
+    const gift3Card = document.getElementById('giftCard3');
+    if (gift3Card) {
+        gift3Card.classList.remove('locked-gift');
+        gift3Card.classList.add('unlocked');
+        document.getElementById('gift3Icon').textContent = '🎁';
+        document.getElementById('gift3Desc').textContent = 'Unlocked! Lucy’s favorite feast and grand confession awaits! 👑✨';
+        document.getElementById('gift3BtnText').textContent = 'Unwrap Grand Finale 🎁✨';
+    }
+}
+
+function proceedToFeast() {
+    closeModal('fabModal');
+    setTimeout(() => {
+        openFeastModal();
+    }, 400);
+}
+
+function openFeastModal() {
+    if (!gift2Opened) {
+        // Soft unlock if directly exploring
+        gift1Opened = true;
+        gift2Opened = true;
+        unlockGift2();
+        unlockGift3();
+    }
+
+    const modal = document.getElementById('feastModal');
+    modal.classList.add('active');
+}
+
+// ==========================================
+// 6.5. GRAND FEAST UNBOXING EXPERIENCE
+// ==========================================
+let isFeastRevealed = false;
+
+function startFeastReveal() {
+    if (isFeastRevealed) return;
+    isFeastRevealed = true;
+
+    // Hide intro, show stage
+    const feastIntro = document.getElementById('feastIntro');
+    const feastStage = document.getElementById('feastStage');
+    feastIntro.style.display = 'none';
+    feastStage.classList.add('active');
+
+    // Chime bell
+    playChimeNote(523.25);
+
+    // Food 1: Diet Coke pops out immediately
+    setTimeout(() => {
+        const foodCoke = document.getElementById('foodCoke');
+        foodCoke.classList.add('pop-in');
+        playChimeNote(587.33);
+        confetti({
+            particleCount: 35,
+            spread: 60,
+            origin: { y: 0.7 }
+        });
+    }, 300);
+
+    // Food 2: Pizza pops out after 1.2s
+    setTimeout(() => {
+        const foodPizza = document.getElementById('foodPizza');
+        foodPizza.classList.add('pop-in');
+        playChimeNote(659.25);
+        confetti({
+            particleCount: 45,
+            spread: 70,
+            origin: { y: 0.65 }
+        });
+    }, 1500);
+
+    // Food 3: Biryani pops out after 2.4s
+    setTimeout(() => {
+        const foodBiryani = document.getElementById('foodBiryani');
+        foodBiryani.classList.add('pop-in');
+        playChimeNote(783.99);
+        confetti({
+            particleCount: 55,
+            spread: 80,
+            origin: { y: 0.6 }
+        });
+    }, 2700);
+
+    // Climax: Grand Love Confession Banner pops out
+    setTimeout(() => {
+        const confessionBanner = document.getElementById('confessionBanner');
+        confessionBanner.classList.add('active');
+
+        // Mega confetti fireworks
+        if (typeof confetti === 'function') {
+            confetti({
+                particleCount: 150,
+                spread: 100,
+                colors: ['#ff1493', '#ff69b4', '#ffd700', '#ff4d80'],
+                origin: { y: 0.45 }
+            });
+            setTimeout(() => {
+                confetti({
+                    particleCount: 100,
+                    angle: 60,
+                    spread: 80,
+                    origin: { x: 0 }
+                });
+                confetti({
+                    particleCount: 100,
+                    angle: 120,
+                    spread: 80,
+                    origin: { x: 1 }
+                });
+            }, 300);
+        }
+    }, 4000);
+}
+
+function resetAndReplayFeast() {
+    isFeastRevealed = false;
+    const foodCoke = document.getElementById('foodCoke');
+    const foodPizza = document.getElementById('foodPizza');
+    const foodBiryani = document.getElementById('foodBiryani');
+    const confessionBanner = document.getElementById('confessionBanner');
+    const feastIntro = document.getElementById('feastIntro');
+    const feastStage = document.getElementById('feastStage');
+
+    foodCoke.classList.remove('pop-in');
+    foodPizza.classList.remove('pop-in');
+    foodBiryani.classList.remove('pop-in');
+    confessionBanner.classList.remove('active');
+
+    feastStage.classList.remove('active');
+    feastIntro.style.display = 'block';
 }
 
 

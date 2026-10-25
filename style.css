@@ -819,6 +819,263 @@ body {
     box-shadow: 0 6px 18px rgba(246, 200, 103, 0.4);
 }
 
+/* GRAND FINALE FEAST & CONFESSION */
+.grand-ribbon {
+    background: linear-gradient(135deg, #ff0844, #ffb199);
+    color: #ffffff;
+}
+
+.feast-btn {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: #ffffff;
+    box-shadow: 0 6px 20px rgba(255, 65, 108, 0.4);
+}
+
+.feast-modal-card {
+    max-width: 620px;
+    background: linear-gradient(180deg, #ffffff 0%, #fff6f8 100%);
+    border: 2px solid rgba(255, 105, 180, 0.4);
+    text-align: center;
+    padding: 34px 20px 40px;
+}
+
+.grand-tag {
+    background: linear-gradient(135deg, #ffe0e9, #ffccd8);
+    color: #d81b60;
+    font-weight: 800;
+}
+
+.feast-headline {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    margin-top: 10px;
+    margin-bottom: 6px;
+}
+
+.feast-sub {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+}
+
+/* 3D Interactive Gift Box */
+.interactive-gift-box {
+    position: relative;
+    width: 170px;
+    height: 170px;
+    margin: 20px auto 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.interactive-gift-box:hover {
+    transform: scale(1.08);
+}
+
+.box-halo {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 105, 180, 0.45) 0%, rgba(255, 215, 0, 0.2) 60%, transparent 80%);
+    filter: blur(15px);
+    animation: pulseHalo 2s infinite ease-in-out;
+}
+
+@keyframes pulseHalo {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.25); opacity: 1; }
+}
+
+.gift-box-wrapper {
+    position: relative;
+    z-index: 2;
+    font-size: 5rem;
+    line-height: 1;
+    animation: boxWobble 2s infinite ease-in-out;
+}
+
+@keyframes boxWobble {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(-5deg) scale(1.04); }
+    75% { transform: rotate(5deg) scale(1.04); }
+}
+
+.box-tap-cta {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    background: #ffe6ef;
+    padding: 6px 16px;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(255, 77, 128, 0.15);
+    animation: bounce 1.8s infinite ease-in-out;
+}
+
+/* Feast Stage (revealed upon click) */
+.feast-stage {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.feast-stage.active {
+    display: block;
+}
+
+.feast-stage-title {
+    font-family: var(--font-heading);
+    font-size: 1.45rem;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+/* Food cards grid */
+.food-cards-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.food-item-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    border: 1px solid rgba(255, 182, 193, 0.5);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.food-item-card.pop-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.food-emoji-wrap {
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+    font-size: 2rem;
+}
+
+.coke-glow {
+    background: linear-gradient(135deg, #e52d27, #b31217);
+    box-shadow: 0 6px 18px rgba(229, 45, 39, 0.35);
+}
+
+.pizza-glow {
+    background: linear-gradient(135deg, #ff9966, #ff5e62);
+    box-shadow: 0 6px 18px rgba(255, 94, 98, 0.35);
+}
+
+.biryani-glow {
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+    box-shadow: 0 6px 18px rgba(247, 151, 30, 0.35);
+}
+
+.food-sparkle {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    font-size: 1.1rem;
+    animation: gentleBounce 1.5s infinite;
+}
+
+.food-info h5 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--text-dark);
+    margin-bottom: 2px;
+}
+
+.food-info p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* Grand Confession Banner */
+.grand-confession-banner {
+    display: none;
+    opacity: 0;
+    transform: scale(0.85);
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: linear-gradient(135deg, #ffeef4 0%, #fff0f7 50%, #ffe3ef 100%);
+    border: 2px solid #ff4d80;
+    border-radius: var(--radius-lg);
+    padding: 28px 20px;
+    margin-top: 24px;
+    box-shadow: 0 15px 45px rgba(255, 77, 128, 0.3), 0 0 30px rgba(255, 77, 128, 0.2);
+}
+
+.grand-confession-banner.active {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+    animation: bannerPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes bannerPop {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.confession-hearts {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    letter-spacing: 6px;
+    animation: gentleBounce 1.5s infinite;
+}
+
+.confession-text {
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 5vw, 2.3rem);
+    color: #2b0f23;
+    line-height: 1.25;
+    margin-bottom: 8px;
+}
+
+.confession-text span {
+    background: linear-gradient(135deg, #ff1493, #e02860);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: var(--font-handwriting);
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+.confession-author {
+    font-size: 0.95rem;
+    color: var(--primary-dark);
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.replay-btn {
+    margin-top: 10px;
+    max-width: 260px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* FOOTER */
 .app-footer {
     text-align: center;

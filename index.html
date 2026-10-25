@@ -17,7 +17,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <!-- Canvas Confetti -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
-    <link rel="stylesheet" href="style.css?v=2.1">
+    <link rel="stylesheet" href="style.css?v=3.0">
 </head>
 <body>
 
@@ -272,26 +272,37 @@
             </div>
 
             <div class="gifts-container">
-                <!-- GIFT 1: LOVE WRT LUCY -->
+                <!-- GIFT 1: CHAPTER I -->
                 <div class="gift-box-card" id="giftCard1" onclick="openCringeGift()">
-                    <div class="gift-icon-bounce">🎁</div>
-                    <div class="gift-ribbon">Love wrt Lucy 💕</div>
-                    <h3>Open: Love wrt Lucy</h3>
-                    <p>The sweet, goofy, and genuine love that makes every day special with you 💕</p>
+                    <div class="gift-icon-bounce">🎬</div>
+                    <div class="gift-ribbon">Chapter I ✨</div>
+                    <h3>Purest Grace — The Light of Lucy</h3>
+                    <p>The candid joy, radiant smiles, and authentic moments that make you truly irreplaceable.</p>
                     <button class="gift-action-btn">
-                        <span>Unwrap Gift #1</span>
+                        <span>Experience Chapter I</span>
                         <i data-lucide="play-circle"></i>
                     </button>
                 </div>
 
-                <!-- GIFT 2: LOVER WRT ME (UNLOCKED AFTER GIFT 1) -->
+                <!-- GIFT 2: CHAPTER II (UNLOCKED AFTER GIFT 1) -->
                 <div class="gift-box-card locked-gift" id="giftCard2" onclick="openFabGift()">
                     <div class="gift-icon-bounce" id="gift2Icon">🔒</div>
-                    <div class="gift-ribbon gold-ribbon">Lover wrt Me 👑</div>
-                    <h3>Lover wrt Me 👑✨</h3>
-                    <p id="gift2Desc">Unwrap Gift #1 first to unlock this final surprise!</p>
+                    <div class="gift-ribbon gold-ribbon">Chapter II 👑</div>
+                    <h3>Symphony of Us — A Devoted Heart</h3>
+                    <p id="gift2Desc">Experience Chapter I first to unlock this chapter.</p>
                     <button class="gift-action-btn gold-btn" id="gift2Btn">
                         <span id="gift2BtnText">Locked 🔒</span>
+                    </button>
+                </div>
+
+                <!-- GIFT 3: THE ULTIMATE FEAST & GRAND CONFESSION -->
+                <div class="gift-box-card locked-gift feast-gift-card" id="giftCard3" onclick="openFeastModal()">
+                    <div class="gift-icon-bounce" id="gift3Icon">🔒</div>
+                    <div class="gift-ribbon grand-ribbon">Grand Finale 🎁</div>
+                    <h3>The Crowning Gift 👑✨</h3>
+                    <p id="gift3Desc">Unlock Chapter II first to reveal the final grand surprise!</p>
+                    <button class="gift-action-btn feast-btn" id="gift3Btn">
+                        <span id="gift3BtnText">Locked 🔒</span>
                     </button>
                 </div>
             </div>
@@ -305,14 +316,14 @@
 
     </main>
 
-    <!-- MODAL 1: LOVE WRT LUCY VIDEO MODAL -->
+    <!-- MODAL 1: CHAPTER I VIDEO MODAL -->
     <div id="cringeModal" class="modal-overlay">
         <div class="modal-card">
             <button class="modal-close" onclick="closeModal('cringeModal')">&times;</button>
             <div class="modal-header">
-                <span class="modal-tag">Surprise Unlocked! 💕</span>
-                <h3>Love wrt Lucy 💕</h3>
-                <p>Pure love, sweet moments, and the smile that stole my heart!</p>
+                <span class="modal-tag">Chapter I • Unfiltered Grace ✨</span>
+                <h3>Purest Grace — The Light of Lucy</h3>
+                <p>Capturing the effortless charm, radiant smiles, and authentic moments of us together.</p>
             </div>
             <div class="video-container">
                 <video id="cringeVideo" controls playsinline preload="metadata">
@@ -322,21 +333,21 @@
             </div>
             <div class="modal-actions">
                 <button class="btn btn-primary" onclick="proceedToFinalGift()">
-                    <span>Ready for Lover wrt Me? 👑✨</span>
+                    <span>Proceed to Chapter II 👑✨</span>
                     <i data-lucide="arrow-right"></i>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL 2: LOVER WRT ME VIDEO MODAL (GRAND FINALE) -->
+    <!-- MODAL 2: CHAPTER II VIDEO MODAL -->
     <div id="fabModal" class="modal-overlay">
         <div class="modal-card gold-modal">
             <button class="modal-close" onclick="closeModal('fabModal')">&times;</button>
             <div class="modal-header">
-                <span class="modal-tag gold-tag">Grand Finale! 👑✨</span>
-                <h3>Lover wrt Me 👑✨</h3>
-                <p>To our beautiful journey, our sweet laughs, and being forever proud to be your lover.</p>
+                <span class="modal-tag gold-tag">Chapter II • Devotion 👑✨</span>
+                <h3>Symphony of Us — A Devoted Heart</h3>
+                <p>Celebrating our shared laughter, our timeless journey, and my unwavering devotion to you.</p>
             </div>
             <div class="video-container">
                 <video id="fabVideo" controls playsinline preload="metadata">
@@ -350,6 +361,95 @@
                     From seeing you on the train on June 30th, through every conflict we conquered, to making a wish at 11:11 PM on September 11th — you are my favorite person. Happy 16th Birthday, beautiful!
                 </p>
             </div>
+            <div class="modal-actions" style="margin-top: 20px;">
+                <button class="btn btn-primary feast-btn" onclick="proceedToFeast()">
+                    <span>Open The Crowning Gift 🎁👑</span>
+                    <i data-lucide="gift"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 5: GRAND FINALE FEAST & CONFESSION MODAL -->
+    <div id="feastModal" class="modal-overlay">
+        <div class="modal-card feast-modal-card">
+            <button class="modal-close" onclick="closeModal('feastModal')">&times;</button>
+            
+            <div class="feast-intro" id="feastIntro">
+                <span class="modal-tag grand-tag">The Crowning Surprise 👑✨</span>
+                <h3 class="feast-headline">A Special Gift For Lucy</h3>
+                <p class="feast-sub">Something specially prepared for your tastebuds and your heart...</p>
+                
+                <!-- INTERACTIVE 3D GIFT BOX TO TAP -->
+                <div class="interactive-gift-box" id="interactiveGiftBox" onclick="startFeastReveal()">
+                    <div class="box-halo"></div>
+                    <div class="gift-box-wrapper">
+                        <div class="box-lid">
+                            <div class="box-bow">🎀</div>
+                        </div>
+                        <div class="box-body">🎁</div>
+                    </div>
+                    <span class="box-tap-cta">Tap the Gift Box to Open! ✨</span>
+                </div>
+            </div>
+
+            <!-- UNBOXED FEAST STAGE -->
+            <div class="feast-stage" id="feastStage">
+                <h4 class="feast-stage-title">Your Absolute Favorite Feast! 😋💖</h4>
+                
+                <div class="food-cards-grid">
+                    <!-- Food 1: Diet Coke -->
+                    <div class="food-item-card" id="foodCoke">
+                        <div class="food-emoji-wrap coke-glow">
+                            <span class="food-emoji">🥤</span>
+                            <span class="food-sparkle">🧊</span>
+                        </div>
+                        <div class="food-info">
+                            <h5>Ice-Cold Diet Coke</h5>
+                            <p>Crisp, bubbling & ice-cold — Lucy's all-time favorite refresher!</p>
+                        </div>
+                    </div>
+
+                    <!-- Food 2: Pizza -->
+                    <div class="food-item-card" id="foodPizza">
+                        <div class="food-emoji-wrap pizza-glow">
+                            <span class="food-emoji">🍕</span>
+                            <span class="food-sparkle">✨</span>
+                        </div>
+                        <div class="food-info">
+                            <h5>Hot Cheesy Pizza</h5>
+                            <p>Oven-fresh, loaded with gooey cheese & endless delicious slices!</p>
+                        </div>
+                    </div>
+
+                    <!-- Food 3: Biryani -->
+                    <div class="food-item-card" id="foodBiryani">
+                        <div class="food-emoji-wrap biryani-glow">
+                            <span class="food-emoji">🍗🍚</span>
+                            <span class="food-sparkle">🔥</span>
+                        </div>
+                        <div class="food-info">
+                            <h5>Royal Dum Biryani</h5>
+                            <p>Rich, aromatic spices & royal flavor — Pure comfort in every bite!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GRAND CONFESSION BANNER -->
+                <div class="grand-confession-banner" id="confessionBanner">
+                    <div class="confession-hearts">💖 ✨ 💖</div>
+                    <h2 class="confession-text">
+                        I love you Lucy,<br>
+                        <span>more than you can imagine.</span>
+                    </h2>
+                    <p class="confession-author">Forever and always, your number one fan 💍</p>
+                    
+                    <button class="btn btn-secondary replay-btn" onclick="resetAndReplayFeast()">
+                        <span>Unbox The Feast Again 🔁</span>
+                    </button>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -386,7 +486,7 @@
         </div>
     </div>
 
-    <script src="app.js?v=2.1"></script>
+    <script src="app.js?v=3.0"></script>
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
